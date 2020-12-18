@@ -1,52 +1,52 @@
 const express = require("express");
 const router = express.Router();
 var ObjectID = require('mongoose').Types.ObjectId
-var{ Post} = require("../../models/Post");
+const Post = require("../../models/Post");
 // route GET api/posts
 // this is test toute
-router.get('/', (req, res) => {
-    Post.find((err, docs) => {
-        if (!err) res.send(docs)
-        else console.log('Error while retrieving all records : ' + JSON.stringify(err, undefined, 2))
-    })
-})
+router.route('/').get((req, res) => {
+    Post.find()
+      .then(posts => res.json(posts))
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
+  router.route('/add').post((req, res) => {
+    const title = req.body.title;
+    const message = req.body.message;
 
-router.post('/', (req, res) => {
-    var newRecord = new Post({
-        title: req.body.title,
-        message: req.body.message
-    })
+    const newPost = new Post({
+      title,
+    message,
+    });
+  
+    newPost.save()
+    .then(() => res.json('Post added!'))
+    .catch(err => res.status(400).json('Error: ' + err));
+  });
+  
 
-    newRecord.save((err, docs) => {
-        if (!err) res.send(docs)
-        else console.log('Error while creating new record : ' + JSON.stringify(err, undefined, 2))
-    })
-})
+  router.route('/update/:id').post((req, res) => {
+    Post.findById(req.params.id)
+      .then(posts => {
+        posts.title = req.body.title;
+        posts.message = req.body.message;
+        
+    posts.save()
+          .then(() => res.json('post updated!'))
+          .catch(err => res.status(400).json('Error: ' + err));
+      })
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
 
-router.put('/:id', (req, res) => {
-    if (!ObjectID.isValid(req.params.id))
-        return res.status(400).send('No record with given id : ' + req.params.id)
+router.route('/:id').get((req, res) => {
+    Post.findById(req.params.id)
+      .then(posts => res.json(posts))
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
+  
+  router.route('/:id').delete((req, res) => {
+    Post.findByIdAndDelete(req.params.id)
+      .then(() => res.json('Post deleted.'))
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
 
-    var updatedRecord = {
-        title: req.body.title,
-        message: req.body.message
-    }
-
-    Post.findByIdAndUpdate(req.params.id, { $set: updatedRecord },{new:true}, (err, docs) => {
-        if (!err) res.send(docs)
-        else console.log('Error while updating a record : ' + JSON.stringify(err, undefined, 2))
-    })
-})
-
-router.delete('/:id', (req, res) => {
-    if (!ObjectID.isValid(req.params.id))
-        return res.status(400).send('No record with given id : ' + req.params.id)
-
-    Post.findByIdAndRemove(req.params.id, (err, docs) => {
-        if (!err) res.send(docs)
-        else console.log('Error while deleting a record : ' + JSON.stringify(err, undefined, 2))
-    })
-})
-
-
-module.exports = router
+module.exports = router;

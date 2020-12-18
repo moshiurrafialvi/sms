@@ -1,8 +1,13 @@
 const mongoose = require("mongoose");
-var Post = mongoose.model('Post',
-{
-    title : {type:String},
-    message : {type:String},
-},'post')
 
-module.exports = { Post}
+const PostSchema = new mongoose.Schema({
+
+    title : {
+        type:String
+    },
+    message : {
+        type:String
+    },
+});
+const Post=mongoose.model('Post',PostSchema);
+module.exports =  Post;
