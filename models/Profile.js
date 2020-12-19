@@ -5,6 +5,16 @@ const ProfileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
   },
+  department: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+  },
+  number: {
+    type: String,
+  },
   website: {
     type: String,
   },
@@ -88,16 +98,11 @@ const ProfileSchema = new mongoose.Schema({
     youtube: {
       type: String,
     },
-    twitter: {
-      type: String,
-    },
+
     facebook: {
       type: String,
     },
     linkedin: {
-      type: String,
-    },
-    instagram: {
       type: String,
     },
   },
