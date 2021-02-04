@@ -32,6 +32,10 @@ const ProfileSchema = new mongoose.Schema({
     type: [String],
     required: true,
   },
+  studentId: {
+    type: String,
+    unique: true,
+  },
   githubusername: {
     type: String,
   },

@@ -55,6 +55,7 @@ router.post(
       youtube,
       facebook,
       linkedin,
+      studentId,
       department,
     } = req.body;
 
@@ -67,6 +68,8 @@ router.post(
     if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
     if (email) profileFields.email = email;
+    if (studentId) profileFields.studentId = studentId;
+
     if (githubusername) profileFields.githubusername = githubusername;
     if (department) profileFields.department = department;
     if (skills) {
@@ -133,6 +136,21 @@ router.get("/user/:user_id", async (req, res) => {
     if (err.kind == "ObjectId") {
       return res.status(400).json({ msg: "No profile found for this user." });
     }
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route    DELETE api/profile
+// @desc     DELETE profile,user and posts
+// @access   Private
+
+router.delete("/", auth, async (req, res) => {
+  try {
+    await Profile.findOneAndRemove({ user: req.user.id }); // Delete Profile
+    await User.findOneAndRemove({ _id: req.user.id }); // Delete User
+    res.json({ msg: "User deleted" });
+  } catch {
+    console.error(err.message);
     res.status(500).send("Server Error");
   }
 });
