@@ -5,6 +5,9 @@ import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
+import Posts from './components/posts/Posts';
+import Post from './components/post/Post';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 import './App.css';
 
@@ -34,7 +37,8 @@ const App=() => {
    <switch>
      <Route exact path="/register" component={Register}/>
      <Route exact path="/login" component={Login}/>
-     
+     <PrivateRoute exact path='/posts' component={Posts}/>
+     <PrivateRoute exact path='/posts/:id' component={Post}/>
    </switch>
  </section>
 </Fragment>
