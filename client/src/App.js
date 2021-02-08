@@ -5,8 +5,13 @@ import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
+import Dashboard from './components/dashboard/Dashboard';
 import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
+import ProfileForm from './components/profile-forms/ProfileForm';
+import EditProfile from './components/profile-forms/EditProfile';
+import AddExperience from './components/profile-forms/AddExperience'
+import AddEducation from './components/profile-forms/AddEducation';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 import './App.css';
@@ -37,6 +42,11 @@ const App=() => {
    <switch>
      <Route exact path="/register" component={Register}/>
      <Route exact path="/login" component={Login}/>
+     <PrivateRoute exact path="/dashboard" component={Dashboard} />
+     <PrivateRoute exact path="/profile-forms" component={ProfileForm} />
+     <PrivateRoute exact path='/add-experience' component={AddExperience}/>
+     <PrivateRoute exact path='/add-education' component={AddEducation}/>
+     <PrivateRoute exact path="/edit-profile" component={EditProfile} />
      <PrivateRoute exact path='/posts' component={Posts}/>
      <PrivateRoute exact path='/posts/:id' component={Post}/>
    </switch>
