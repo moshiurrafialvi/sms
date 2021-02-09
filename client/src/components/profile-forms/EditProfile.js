@@ -82,8 +82,15 @@ const EditProfile = ({
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
           <label className="form-text">Department</label>
-          <select name="department" value={department} onChange={onChange}>
-            <option>* Select Department</option>
+          <select
+            name="department"
+            value={department}
+            onChange={onChange}
+            required
+          >
+            <option value=" " selected disabled hidden>
+              * Select Department
+            </option>
             <option value="CSE">CSE</option>
             <option value="EEE">EEE</option>
             <option value="CEE">CEE</option>
