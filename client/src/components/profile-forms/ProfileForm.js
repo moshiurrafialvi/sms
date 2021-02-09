@@ -17,7 +17,8 @@ const initialState = {
   githubusername: '',
   youtube: '',
   facebook: '',
-  linkedin: ''
+  linkedin: '',
+  researchgate:''
 };
 
 const ProfileForm = ({
@@ -59,7 +60,8 @@ const ProfileForm = ({
   githubusername,
   youtube,
   facebook,
-  linkedin
+  linkedin,
+  researchgate
   } = formData;
 
   const onChange = e =>
@@ -261,6 +263,18 @@ const ProfileForm = ({
                 onChange={onChange}
               />
             </div>
+            <div className="form-group social-input">
+            <i class="fab fa-researchgate"></i>
+              <input
+                type="text"
+                placeholder="ResearchGate URL"
+                name="researchgate"
+                value={researchgate}
+                onChange={onChange}
+              />
+            </div>
+            
+
 
           </Fragment>
         )}
