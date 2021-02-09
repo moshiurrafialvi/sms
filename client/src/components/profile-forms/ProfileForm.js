@@ -78,9 +78,10 @@ const ProfileForm = ({
       </p>
       <small>* = required field</small>
       <form className="form" onSubmit={onSubmit}>
-        
+
       <div className="form-group">
-          <select name="status" value={status} onChange={onChange}>
+          <label className="form-text">Department</label>
+          <select name="department" value={department} onChange={onChange}>
             <option>* Select Department</option>
             <option value="CSE">CSE</option>
             <option value="EEE">EEE</option>
@@ -89,8 +90,14 @@ const ProfileForm = ({
             <option value="BTM">BTM</option>
           </select>
         </div>
-          
+    
+
+
+        
         <div className="form-group">
+        <label className="form-text">
+            Email
+          </label>
           <input
             type="text"
             placeholder="* Email"
@@ -100,9 +107,12 @@ const ProfileForm = ({
           />
         </div>
         <div className="form-group">
+        <label className="form-text">
+            Phone Number
+          </label>
           <input
             type="text"
-            placeholder="* Phone Number"
+            placeholder="Phone Number"
             name="number"
             value={number}
             onChange={onChange}
@@ -110,6 +120,9 @@ const ProfileForm = ({
 
         </div>
         <div className="form-group">
+        <label className="form-text">
+            Website
+          </label>
           <input
             type="text"
             placeholder="Website"
@@ -120,6 +133,9 @@ const ProfileForm = ({
 
         </div>
         <div className="form-group">
+        <label className="form-text">
+            Location
+          </label>
           <input
             type="text"
             placeholder="Location"
@@ -133,16 +149,22 @@ const ProfileForm = ({
         </div>
 
         <div className="form-group">
-          <input
-            type="text"
-            placeholder="* Status"
-            name="status"
-            value={status}
-            onChange={onChange}
-          />
-          </div>
+        <label className="form-text">
+            Status
+          </label>
+          <select name="status" value={status} onChange={onChange}>
+            <option>* Select Status</option>
+            <option value="Student">Student</option>
+            <option value="Lecturer">Lecturer</option>
+            <option value="Associate Professor">Associate Professor</option>
+            <option value="Professor">Professor</option>
+          </select>
+        </div>
 
         <div className="form-group">
+        <label className="form-text">
+            Bio
+          </label>
           <textarea
             placeholder="A short bio of yourself"
             name="bio"
@@ -153,6 +175,9 @@ const ProfileForm = ({
         </div>
 
         <div className="form-group">
+        <label className="form-text">
+            Skills
+          </label>
           <input
             type="text"
             placeholder="* Skills"
@@ -162,9 +187,12 @@ const ProfileForm = ({
           />
         </div>
         <div className="form-group">
+        <label className="form-text">
+            ID
+          </label>
           <input
             type="text"
-            placeholder="* Student ID"
+            placeholder="* ID"
             name="studentId"
             value={studentId}
             onChange={onChange}
@@ -172,6 +200,9 @@ const ProfileForm = ({
 
         </div>
         <div className="form-group">
+        <label className="form-text">
+            Github Username
+          </label>
           <input
             type="text"
             placeholder="Github Username"

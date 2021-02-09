@@ -32,6 +32,7 @@ const Login = ({ login, isAuthenticated }) => {
       </p>
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
+          <label>Email</label>
           <input
             type="email"
             placeholder="Email Address"
@@ -42,6 +43,7 @@ const Login = ({ login, isAuthenticated }) => {
           />
         </div>
         <div className="form-group">
+          <label>Password</label>
           <input
             type="password"
             placeholder="Password"
