@@ -109,6 +109,9 @@ const ProfileSchema = new mongoose.Schema({
     linkedin: {
       type: String,
     },
+    researchgate: {
+      type: String,
+    },
   },
   date: {
     type: Date,

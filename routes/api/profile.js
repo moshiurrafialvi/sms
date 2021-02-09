@@ -83,6 +83,7 @@ router.post(
     if (youtube) profileFields.social.youtube = youtube;
     if (facebook) profileFields.social.facebook = facebook;
     if (linkedin) profileFields.social.linkedin = linkedin;
+    if (researchgate) profileFields.social.researchgate = researchgate;
 
     try {
       let profile = await Profile.findOne({ user: req.user.id });
