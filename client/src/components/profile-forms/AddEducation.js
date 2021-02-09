@@ -32,8 +32,7 @@ const AddEducation = ({ addEducation, history }) => {
     <Fragment>
       <h1 className="large text-primary">Add Your Education</h1>
       <p className="lead">
-        <i className="fas fa-code-branch" /> Add school that you
-        have attended
+        <i className="fas fa-code-branch" /> Add your Institute
       </p>
       <small>* = required field</small>
       <form
@@ -44,6 +43,9 @@ const AddEducation = ({ addEducation, history }) => {
         }}
       >
         <div className="form-group">
+        <label className="form-text">
+            Institute
+          </label>
           <input
             type="text"
             placeholder="* Institute"
@@ -54,6 +56,9 @@ const AddEducation = ({ addEducation, history }) => {
           />
         </div>
         <div className="form-group">
+        <label className="form-text">
+            Degree or Certificate
+          </label>
           <input
             type="text"
             placeholder="* Degree or Certificate"
@@ -64,6 +69,9 @@ const AddEducation = ({ addEducation, history }) => {
           />
         </div>
         <div className="form-group">
+        <label className="form-text">
+            Field of Study
+          </label>
           <input
             type="text"
             placeholder="Field of Study"
@@ -73,6 +81,9 @@ const AddEducation = ({ addEducation, history }) => {
           />
         </div>
         <div className="form-group">
+        <label className="form-text">
+            From Date
+          </label>
           <h4>From Date</h4>
           <input type="date" name="from" value={from} onChange={onChange} />
         </div>
@@ -89,6 +100,9 @@ const AddEducation = ({ addEducation, history }) => {
           </p>
         </div>
         <div className="form-group">
+        <label className="form-text">
+            To Date
+          </label>
           <h4>To Date</h4>
           <input
             type="date"
@@ -99,6 +113,9 @@ const AddEducation = ({ addEducation, history }) => {
           />
         </div>
         <div className="form-group">
+        <label className="form-text">
+            Description
+          </label>
           <textarea
             name="description"
             cols="30"
