@@ -1,31 +1,31 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createProfile, getCurrentProfile } from '../../actions/profile';
+import React, { Fragment, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { createProfile, getCurrentProfile } from "../../actions/profile";
 
 const initialState = {
-  department:'',
-  email:'',
-  number:'',
-  website: '',
-  location: '',
-  status: '',
-  bio: '',
-  skills: '',
-  studentId:'',
-  githubusername: '',
-  youtube: '',
-  facebook: '',
-  linkedin: '',
-  researchgate:''
+  department: "",
+  email: "",
+  number: "",
+  website: "",
+  location: "",
+  status: "",
+  bio: "",
+  skills: "",
+  studentId: "",
+  githubusername: "",
+  youtube: "",
+  facebook: "",
+  linkedin: "",
+  researchgate: "",
 };
 
 const EditProfile = ({
   profile: { profile, loading },
   createProfile,
   getCurrentProfile,
-  history
+  history,
 }) => {
   const [formData, setFormData] = useState(initialState);
 
@@ -42,32 +42,32 @@ const EditProfile = ({
         if (key in profileData) profileData[key] = profile.social[key];
       }
       if (Array.isArray(profileData.skills))
-        profileData.skills = profileData.skills.join(', ');
+        profileData.skills = profileData.skills.join(", ");
       setFormData(profileData);
     }
   }, [loading, getCurrentProfile, profile]);
 
   const {
-  department,
-  email,
-  number,
-  website,
-  location,
-  status,
-  bio,
-  skills,
-  studentId,
-  githubusername,
-  youtube,
-  facebook,
-  linkedin,
-  researchgate
+    department,
+    email,
+    number,
+    website,
+    location,
+    status,
+    bio,
+    skills,
+    studentId,
+    githubusername,
+    youtube,
+    facebook,
+    linkedin,
+    researchgate,
   } = formData;
 
-  const onChange = e =>
+  const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     createProfile(formData, history, profile ? true : false);
   };
@@ -80,9 +80,8 @@ const EditProfile = ({
       </p>
       <small>* = required field</small>
       <form className="form" onSubmit={onSubmit}>
-        
-      <div className="form-group">
-      <label className="form-text">Department</label>
+        <div className="form-group">
+          <label className="form-text">Department</label>
           <select name="department" value={department} onChange={onChange}>
             <option>* Select Department</option>
             <option value="CSE">CSE</option>
@@ -92,11 +91,9 @@ const EditProfile = ({
             <option value="BTM">BTM</option>
           </select>
         </div>
-          
+
         <div className="form-group">
-        <label className="form-text">
-            Email
-          </label>
+          <label className="form-text">Email</label>
           <input
             type="text"
             placeholder="* Email"
@@ -106,9 +103,7 @@ const EditProfile = ({
           />
         </div>
         <div className="form-group">
-        <label className="form-text">
-            Phone Number
-          </label>
+          <label className="form-text">Phone Number</label>
           <input
             type="text"
             placeholder="Phone Number"
@@ -116,12 +111,9 @@ const EditProfile = ({
             value={number}
             onChange={onChange}
           />
-
         </div>
         <div className="form-group">
-        <label className="form-text">
-            Website
-          </label>
+          <label className="form-text">Website</label>
           <input
             type="text"
             placeholder="Website"
@@ -129,12 +121,9 @@ const EditProfile = ({
             value={website}
             onChange={onChange}
           />
-
         </div>
         <div className="form-group">
-        <label className="form-text">
-           Location
-          </label>
+          <label className="form-text">Location</label>
           <input
             type="text"
             placeholder="Location"
@@ -142,17 +131,15 @@ const EditProfile = ({
             value={location}
             onChange={onChange}
           />
-          <small className="form-text">
-            (eg. Dhaka,Chittagong)
-          </small>
+          <small className="form-text">(eg. Dhaka,Chittagong)</small>
         </div>
 
         <div className="form-group">
-        <label className="form-text">
-            Status
-          </label>
-          <select name="status" value={status} onChange={onChange}>
-            <option>* Select Status</option>
+          <label className="form-text">Status</label>
+          <select name="status" value={status} onChange={onChange} required>
+            <option value=" " selected disabled hidden>
+              * Select Status
+            </option>
             <option value="Student">Student</option>
             <option value="Lecturer">Lecturer</option>
             <option value="Associate Professor">Associate Professor</option>
@@ -187,7 +174,6 @@ const EditProfile = ({
             value={studentId}
             onChange={onChange}
           />
-
         </div>
         <div className="form-group">
           <input
@@ -197,11 +183,8 @@ const EditProfile = ({
             value={githubusername}
             onChange={onChange}
           />
-          <small className="form-text">
-             include your github username
-          </small>
+          <small className="form-text">include your github username</small>
         </div>
-        
 
         <div className="my-2">
           <button
@@ -216,7 +199,6 @@ const EditProfile = ({
 
         {displaySocialInputs && (
           <Fragment>
-
             <div className="form-group social-input">
               <i className="fab fa-youtube fa-2x" />
               <input
@@ -249,7 +231,7 @@ const EditProfile = ({
               />
             </div>
             <div className="form-group social-input">
-            <i class="fab fa-researchgate"></i>
+              <i class="fab fa-researchgate"></i>
               <input
                 type="text"
                 placeholder="ResearchGate URL"
@@ -258,9 +240,6 @@ const EditProfile = ({
                 onChange={onChange}
               />
             </div>
-            
-
-
           </Fragment>
         )}
 
@@ -276,13 +255,13 @@ const EditProfile = ({
 EditProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  profile: state.profile
+const mapStateToProps = (state) => ({
+  profile: state.profile,
 });
 
 export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
-EditProfile
+  EditProfile
 );

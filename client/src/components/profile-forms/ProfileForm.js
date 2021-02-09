@@ -1,31 +1,31 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createProfile, getCurrentProfile } from '../../actions/profile';
+import React, { Fragment, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { createProfile, getCurrentProfile } from "../../actions/profile";
 
 const initialState = {
-  department:'',
-  email:'',
-  number:'',
-  website: '',
-  location: '',
-  status: '',
-  bio: '',
-  skills: '',
-  studentId:'',
-  githubusername: '',
-  youtube: '',
-  facebook: '',
-  linkedin: '',
-  researchgate:''
+  department: "",
+  email: "",
+  number: "",
+  website: "",
+  location: "",
+  status: "",
+  bio: "",
+  skills: "",
+  studentId: "",
+  githubusername: "",
+  youtube: "",
+  facebook: "",
+  linkedin: "",
+  researchgate: "",
 };
 
 const ProfileForm = ({
   profile: { profile, loading },
   createProfile,
   getCurrentProfile,
-  history
+  history,
 }) => {
   const [formData, setFormData] = useState(initialState);
 
@@ -42,32 +42,32 @@ const ProfileForm = ({
         if (key in profileData) profileData[key] = profile.social[key];
       }
       if (Array.isArray(profileData.skills))
-        profileData.skills = profileData.skills.join(', ');
+        profileData.skills = profileData.skills.join(", ");
       setFormData(profileData);
     }
   }, [loading, getCurrentProfile, profile]);
 
   const {
-  department,
-  email,
-  number,
-  website,
-  location,
-  status,
-  bio,
-  skills,
-  studentId,
-  githubusername,
-  youtube,
-  facebook,
-  linkedin,
-  researchgate
+    department,
+    email,
+    number,
+    website,
+    location,
+    status,
+    bio,
+    skills,
+    studentId,
+    githubusername,
+    youtube,
+    facebook,
+    linkedin,
+    researchgate,
   } = formData;
 
-  const onChange = e =>
+  const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     createProfile(formData, history, profile ? true : false);
   };
@@ -80,11 +80,10 @@ const ProfileForm = ({
       </p>
       <small>* = required field</small>
       <form className="form" onSubmit={onSubmit}>
-
-      <div className="form-group">
+        <div className="form-group">
           <label className="form-text">Department</label>
           <select name="department" value={department} onChange={onChange}>
-            <option>* Select Department</option>
+            <option>* Select dept</option>
             <option value="CSE">CSE</option>
             <option value="EEE">EEE</option>
             <option value="CEE">CEE</option>
@@ -92,14 +91,9 @@ const ProfileForm = ({
             <option value="BTM">BTM</option>
           </select>
         </div>
-    
 
-
-        
         <div className="form-group">
-        <label className="form-text">
-            Email
-          </label>
+          <label className="form-text">Email</label>
           <input
             type="text"
             placeholder="* Email"
@@ -109,9 +103,7 @@ const ProfileForm = ({
           />
         </div>
         <div className="form-group">
-        <label className="form-text">
-            Phone Number
-          </label>
+          <label className="form-text">Phone Number</label>
           <input
             type="text"
             placeholder="Phone Number"
@@ -119,12 +111,9 @@ const ProfileForm = ({
             value={number}
             onChange={onChange}
           />
-
         </div>
         <div className="form-group">
-        <label className="form-text">
-            Website
-          </label>
+          <label className="form-text">Website</label>
           <input
             type="text"
             placeholder="Website"
@@ -132,12 +121,9 @@ const ProfileForm = ({
             value={website}
             onChange={onChange}
           />
-
         </div>
         <div className="form-group">
-        <label className="form-text">
-            Location
-          </label>
+          <label className="form-text">Location</label>
           <input
             type="text"
             placeholder="Location"
@@ -145,15 +131,11 @@ const ProfileForm = ({
             value={location}
             onChange={onChange}
           />
-          <small className="form-text">
-             (eg. Dhaka,Chittagong)
-          </small>
+          <small className="form-text">(eg. Dhaka,Chittagong)</small>
         </div>
 
         <div className="form-group">
-        <label className="form-text">
-            Status
-          </label>
+          <label className="form-text">Status</label>
           <select name="status" value={status} onChange={onChange}>
             <option>* Select Status</option>
             <option value="Student">Student</option>
@@ -164,9 +146,7 @@ const ProfileForm = ({
         </div>
 
         <div className="form-group">
-        <label className="form-text">
-            Bio
-          </label>
+          <label className="form-text">Bio</label>
           <textarea
             placeholder="A short bio of yourself"
             name="bio"
@@ -177,9 +157,7 @@ const ProfileForm = ({
         </div>
 
         <div className="form-group">
-        <label className="form-text">
-            Skills
-          </label>
+          <label className="form-text">Skills</label>
           <input
             type="text"
             placeholder="* Skills"
@@ -189,9 +167,7 @@ const ProfileForm = ({
           />
         </div>
         <div className="form-group">
-        <label className="form-text">
-            ID
-          </label>
+          <label className="form-text">ID</label>
           <input
             type="text"
             placeholder="* ID"
@@ -199,12 +175,9 @@ const ProfileForm = ({
             value={studentId}
             onChange={onChange}
           />
-
         </div>
         <div className="form-group">
-        <label className="form-text">
-            Github Username
-          </label>
+          <label className="form-text">Github Username</label>
           <input
             type="text"
             placeholder="Github Username"
@@ -212,11 +185,8 @@ const ProfileForm = ({
             value={githubusername}
             onChange={onChange}
           />
-          <small className="form-text">
-             include your github username
-          </small>
+          <small className="form-text">include your github username</small>
         </div>
-        
 
         <div className="my-2">
           <button
@@ -231,7 +201,6 @@ const ProfileForm = ({
 
         {displaySocialInputs && (
           <Fragment>
-
             <div className="form-group social-input">
               <i className="fab fa-youtube fa-2x" />
               <input
@@ -264,7 +233,7 @@ const ProfileForm = ({
               />
             </div>
             <div className="form-group social-input">
-            <i class="fab fa-researchgate"></i>
+              <i class="fab fa-researchgate"></i>
               <input
                 type="text"
                 placeholder="ResearchGate URL"
@@ -273,9 +242,6 @@ const ProfileForm = ({
                 onChange={onChange}
               />
             </div>
-            
-
-
           </Fragment>
         )}
 
@@ -291,13 +257,13 @@ const ProfileForm = ({
 ProfileForm.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  profile: state.profile
+const mapStateToProps = (state) => ({
+  profile: state.profile,
 });
 
 export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
-ProfileForm
+  ProfileForm
 );
