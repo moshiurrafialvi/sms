@@ -83,7 +83,7 @@ const ProfileForm = ({
         <div className="form-group">
           <label className="form-text">Department</label>
           <select name="department" value={department} onChange={onChange}>
-            <option>* Select dept</option>
+            <option>* Select department</option>
             <option value="CSE">CSE</option>
             <option value="EEE">EEE</option>
             <option value="CEE">CEE</option>
@@ -100,6 +100,7 @@ const ProfileForm = ({
             name="email"
             value={email}
             onChange={onChange}
+            required
           />
         </div>
         <div className="form-group">
@@ -164,6 +165,7 @@ const ProfileForm = ({
             name="skills"
             value={skills}
             onChange={onChange}
+            
           />
         </div>
         <div className="form-group">
@@ -174,6 +176,8 @@ const ProfileForm = ({
             name="studentId"
             value={studentId}
             onChange={onChange}
+            required
+          
           />
         </div>
         <div className="form-group">

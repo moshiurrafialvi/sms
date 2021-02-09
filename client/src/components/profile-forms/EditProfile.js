@@ -107,6 +107,7 @@ const EditProfile = ({
             name="email"
             value={email}
             onChange={onChange}
+            required
           />
         </div>
         <div className="form-group">
@@ -180,6 +181,7 @@ const EditProfile = ({
             name="studentId"
             value={studentId}
             onChange={onChange}
+            required
           />
         </div>
         <div className="form-group">
