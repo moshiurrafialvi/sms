@@ -59,6 +59,7 @@ router.post(
       linkedin,
       studentId,
       department,
+      researchgate,
     } = req.body;
 
     //Build Profile Object
