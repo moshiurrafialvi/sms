@@ -35,6 +35,9 @@ const AddExperience = ({ addExperience, history }) => {
         }}
       >
         <div className="form-group">
+        <label className="form-text">
+            Job Title
+          </label>
           <input
             type="text"
             placeholder="* Job Title"
@@ -45,6 +48,9 @@ const AddExperience = ({ addExperience, history }) => {
           />
         </div>
         <div className="form-group">
+        <label className="form-text">
+            Company
+          </label>
           <input
             type="text"
             placeholder="* Company"
@@ -55,6 +61,9 @@ const AddExperience = ({ addExperience, history }) => {
           />
         </div>
         <div className="form-group">
+        <label className="form-text">
+            Location
+          </label>
           <input
             type="text"
             placeholder="Location"
@@ -64,6 +73,9 @@ const AddExperience = ({ addExperience, history }) => {
           />
         </div>
         <div className="form-group">
+        <label className="form-text">
+            From Date
+          </label>
           <h4>From Date</h4>
           <input type="date" name="from" value={from} onChange={onChange} />
         </div>
@@ -82,6 +94,9 @@ const AddExperience = ({ addExperience, history }) => {
           </p>
         </div>
         <div className="form-group">
+        <label className="form-text">
+            To Date
+          </label>
           <h4>To Date</h4>
           <input
             type="date"
@@ -92,6 +107,9 @@ const AddExperience = ({ addExperience, history }) => {
           />
         </div>
         <div className="form-group">
+        <label className="form-text">
+            Job Description
+          </label>
           <textarea
             name="description"
             cols="30"
