@@ -1,0 +1,5 @@
+{
+  "mongoURI": "mongodb+srv://alvi:alvi@sms.sex02.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken",
+  "githubToken": "8ec5632c1335048dec1d17b3d59d5eb095fa8433"
+}
