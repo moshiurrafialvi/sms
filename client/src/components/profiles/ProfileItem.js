@@ -7,7 +7,8 @@ const ProfileItem = ({
     user: { _id, name, avatar },
     status,
     company,
-    location,
+    studentId,
+    department,
     skills
   }
 }) => {
@@ -19,7 +20,8 @@ const ProfileItem = ({
         <p>
           {status} {company && <span> at {company}</span>}
         </p>
-        <p className='my-1'>{location && <span>{location}</span>}</p>
+        <p className='my-1'>{department && <span>{department}</span>}</p>
+        <p className='my-1'>{studentId && <span>{studentId}</span>}</p>
         <Link to={`/profile/${_id}`} className='btn btn-primary'>
           View Profile
         </Link>
