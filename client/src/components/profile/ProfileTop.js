@@ -19,7 +19,7 @@ const ProfileTop = ({
     <div className="profile-top bg-primary p-2">
       <img className="round-img my-1" src={avatar} alt="" />
       <h1 className="large">{name}</h1>
-      <p>{studentId ? <span>{studentId}</span> : null}</p>
+      <p>{studentId? <span>{studentId}</span> : null}</p>
       <p>{email ? <span>{email}</span> : null}</p>
       <p>{number ? <span>{number}</span> : null}</p>
       <p>{department ? <span>{department}</span> : null}</p>
